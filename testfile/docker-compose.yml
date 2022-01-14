@@ -1,14 +1,15 @@
-version: '3'
+version: "3"
 
 services:
-
+  # MySQL Configuration -----------------
   mysql:
     image: mariadb
 
-    # mount host machine path `/data/mysql` in the container path `/var/lib/mysql
+    # mount host machine path `data/mysql` in the container path `/var/lib/mysql
     # allows DB files to be stored in the host machine
+    # Directory preparation at appA
     volumes:
-      - /data/mysql: /var/lib/mysql
+      - $PWD/data/mysql:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: mysql_root_pass
@@ -18,3 +19,51 @@ services:
 
     restart: always
 
+  # WordPress Configuration -----------------
+  wordpress:
+    image: wordpress:php7.3-fpm-alpine
+
+    # mounts the host machine path `data/html` in the container path `/var/www/html`
+    # allows WordPress application files to be stored in the host machine instead of the container
+    # Directory preparation at AppB
+    volumes:
+      - $PWD/data/html:/var/www/html
+
+    # states that WordPress service is dependent on the mysql service
+    # implies that the services are started and stopped in the dependency order
+    depends_on:
+      - mysql
+
+    # match it with MariaDB's envirnmental variables
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      WORDPRESS_DB_NAME: db_name
+      WORDPRESS_DB_USER: user_name
+      WORDPRESS_DB_PASSWORD: user_pass
+      WORDPRESS_TABLE_PREFIX: wp_
+
+    # enables the WordPress service to communicate with the mysql service
+    links:
+      - mysql
+
+    restart: always
+
+  # NGINX Configuration -----------------
+  nginx:
+    image: nginx:alpine
+
+    # host path `data/html` has to match the host path mentioned in the WordPress configuration
+    volumes:
+      - nginx:/etc/nginx/conf.d
+      - data/html:var/www/html
+
+    # maps the host machine port 8080 to the container port 80
+    ports:
+      - 8080:80
+
+    # enables the NGINX service to communicate with the WordPress service
+    links:
+      - wordpress
+
+    # provide a nginx.config in AppC
