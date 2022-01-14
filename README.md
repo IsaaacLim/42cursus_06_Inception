@@ -30,6 +30,8 @@
 ## Notes
 
 1. Docker container are `ephemeral`. Hence, data in the docker container are destroyed at the end of the cycle. [article](https://medium.com/@maannniii/why-are-docker-containers-ephemeral-169c99d77455)
+2. Mounting current directory as a volume in Docker on Windows 10 (PowerShell)
+   - use `${PWD}` [source](<https://stackoverflow.com/questions/41485217/mount-current-directory-as-a-volume-in-docker-on-windows-10#:~:text=The%20following%20options%20will%20work%20on%20both%20PowerShell%20and%20on%20Linux%20(at%20least%20Ubuntu)%3A>)
 
 ## Steps
 

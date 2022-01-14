@@ -10,7 +10,7 @@ services:
     # Directory preparation at appA
     volumes:
       # - $PWD/data/mysql:/var/lib/mysql
-      - data/mysql:/var/lib/mysql
+      - ${PWD}/data/mysql:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: mysql_root_pass
@@ -29,7 +29,7 @@ services:
     # Directory preparation at AppB
     volumes:
       # - $PWD/data/html:/var/www/html
-      - data/html:/var/www/html
+      - ${PWD}/data/html:/var/www/html
 
     # states that WordPress service is dependent on the mysql service
     # implies that the services are started and stopped in the dependency order
@@ -58,7 +58,7 @@ services:
     # host path `data/html` has to match the host path mentioned in the WordPress configuration
     volumes:
       - nginx:/etc/nginx/conf.d
-      - data/html:var/www/html
+      - ${PWD}/data/html:var/www/html
 
     # maps the host machine port 8080 to the container port 80
     ports:
