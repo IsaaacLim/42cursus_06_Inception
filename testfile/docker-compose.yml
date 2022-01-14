@@ -57,7 +57,8 @@ services:
 
     # host path `data/html` has to match the host path mentioned in the WordPress configuration
     volumes:
-      - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfilenginx:/etc/nginx/conf.d
+      # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/nginx:/etc/nginx/conf.d
+      - nginx:/etc/nginx/conf.d
       - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
 
     # maps the host machine port 8080 to the container port 80
