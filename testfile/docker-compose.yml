@@ -9,8 +9,8 @@ services:
     # allows DB files to be stored in the host machine
     # Directory preparation at appA
     volumes:
-      # - $PWD/data/mysql:/var/lib/mysql
-      - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/mysql:/var/lib/mysql
+      - $PWD/data/mysql:/var/lib/mysql
+      # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/mysql:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: mysql_root_pass
@@ -28,8 +28,8 @@ services:
     # allows WordPress application files to be stored in the host machine instead of the container
     # Directory preparation at AppB
     volumes:
-      # - $PWD/data/html:/var/www/html
-      - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
+      - $PWD/data/html:/var/www/html
+      # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
 
     # states that WordPress service is dependent on the mysql service
     # implies that the services are started and stopped in the dependency order
@@ -57,9 +57,11 @@ services:
 
     # host path `data/html` has to match the host path mentioned in the WordPress configuration
     volumes:
-      - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/nginx:/etc/nginx/conf.d
-      # - nginx:/etc/nginx/conf.d
-      - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
+      - ./nginx:/etc/nginx/conf.d
+      # - $PWD/nginx:/etc/nginx/conf.d
+      - $PWD/data/html:/var/www/html
+      # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/nginx:/etc/nginx/conf.d
+      # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
 
     # maps the host machine port 8080 to the container port 80
     ports:
