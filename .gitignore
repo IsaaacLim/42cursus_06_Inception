@@ -1,0 +1,2 @@
+testfile/data/*
+!testfile/data/nothing.txt
