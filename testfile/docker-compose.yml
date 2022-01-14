@@ -9,7 +9,8 @@ services:
     # allows DB files to be stored in the host machine
     # Directory preparation at appA
     volumes:
-      - $PWD/data/mysql:/var/lib/mysql
+      # - $PWD/data/mysql:/var/lib/mysql
+      - data/mysql:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: mysql_root_pass
@@ -27,7 +28,8 @@ services:
     # allows WordPress application files to be stored in the host machine instead of the container
     # Directory preparation at AppB
     volumes:
-      - $PWD/data/html:/var/www/html
+      # - $PWD/data/html:/var/www/html
+      - data/html:/var/www/html
 
     # states that WordPress service is dependent on the mysql service
     # implies that the services are started and stopped in the dependency order
