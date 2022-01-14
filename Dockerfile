@@ -1,4 +1,8 @@
-FROM alpine
+FROM alpine:latest
 
-RUN apt-get nginx
+RUN apk add --no-cache curl \
+	gcc\
+	gdb\
+	make \
+	valgrind
 

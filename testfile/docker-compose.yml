@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mariadb
+
+    # mount host machine path `/data/mysql` in the container path `/var/lib/mysql
+    # allows DB files to be stored in the host machine
+    volumes:
+      - /data/mysql: /var/lib/mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: user_name
+      MYSQL_PASSWORD: user_pass
+
+    restart: always
+
