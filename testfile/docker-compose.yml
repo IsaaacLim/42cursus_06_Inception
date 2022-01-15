@@ -4,7 +4,7 @@ services:
   # MySQL Configuration -----------------
   mysql:
     image: mariadb
-    # build: .
+    # build: ./requirements/mariadb/
     # container_name: mariadb
 
     # ports:
