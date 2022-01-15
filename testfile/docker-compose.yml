@@ -4,6 +4,14 @@ services:
   # MySQL Configuration -----------------
   mysql:
     image: mariadb
+    # build: .
+    # container_name: mariadb
+
+    # ports:
+    #   - "3306:3306"
+    
+    # networks:
+    #   - inception
 
     # mount host machine path `data/mysql` in the container path `/var/lib/mysql
     # allows DB files to be stored in the host machine
@@ -36,6 +44,9 @@ services:
     depends_on:
       - mysql
 
+    # networks:
+    #   - inception
+
     # match it with MariaDB's envirnmental variables
     environment:
       WORDPRESS_DB_HOST: mysql
@@ -63,6 +74,9 @@ services:
       # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/nginx:/etc/nginx/conf.d
       # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/html:/var/www/html
 
+    # networks:
+    #   - inception
+
     # maps the host machine port 8080 to the container port 80
     ports:
       - 8080:80
@@ -72,3 +86,8 @@ services:
       - wordpress
 
     # provide a nginx.config in AppC
+
+
+# networks:
+#   inception:
+#     driver: bridge

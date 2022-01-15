@@ -12,6 +12,7 @@
 6. [Tutorial](https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a)
 7. [Ref-Hans](https://hub.docker.com/r/hanshazairi/42ools)
 8. [Inception resources](https://awesomeopensource.com/project/barimehdi77/inception)
+9. Dockerfile referenc, contained information on the `RUN` command for shell commands [soruce](https://docs.docker.com/engine/reference/builder/)
 
 ## Idea
 
@@ -36,6 +37,11 @@
 3. Simple test whether `NGINX` can run normally on system [How to use the official NGINX DOcker Image](https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/) _<- also `--name web` to name container, then `docker stop web`_
 4. `curl localhost:8080` to check if there's anything being returned by a (server?)
    - Create an HTTP server `python -m http.server 8000`
+5. `apk` vs `apt`update && install _linux distributions_ [info](https://wiki.alpinelinux.org/wiki/Comparison_with_other_distros)
+6. `RUN` vs `CMD` vs `ENTRYPOINT` + `exec` & `shell` form [info](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
+7. `--no-cache` vs `apk update` & `rm /var/cache/apk/*` [source](https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk)
+   - `--no-cache` is more elegant but
+   - There's less network chatter to do `apk update` at the top then `rm -rf /var/cache/apk/*` near the bottom
 
 ## Steps
 
