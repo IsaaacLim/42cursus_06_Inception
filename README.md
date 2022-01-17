@@ -133,3 +133,15 @@ $ sudo chown -R www-data:www-data /data/html
 ### NGINX config
 
 Create a directory named `nginx` with a `nginx.conf` file in it.
+
+#### Tabs
+
+- Mariadb
+  - [Creating custom Docker Image](https://mariadb.com/kb/en/creating-a-custom-docker-image/)
+  - [Installing Mariadb on Ubuntu](https://linuxize.com/post/how-to-install-mariadb-on-ubuntu-18-04/)
+  - [configure.sh for alpine-mariadb](https://github.com/yobasystems/alpine-mariadb/blob/master/alpine-mariadb-armhf/files/run.sh)
+  - [Linux bash script for creating and configuring mariadb](https://geekdudes.wordpress.com/2020/07/16/linux-bash-script-for-creating-and-configuring-maria-database/)
+- Others
+  - [Docker compose set user and group on mounted volume](https://stackoverflow.com/questions/40462189/docker-compose-set-user-and-group-on-mounted-volume)
+  - [Docker compose giver directory r/w permissions](https://stackoverflow.com/questions/54354227/docker-create-directory-in-container-after-docker-compose-up-and-give-it-r-w-pe/54354609)
+  - [How to install NGINX](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-10)
