@@ -21,10 +21,10 @@ services:
       # - /c/users/isaac/Documents/Programming/42cursus_06_Inception/testfile/data/mysql:/var/lib/mysql
 
     environment:
-      MYSQL_ROOT_PASSWORD: mysql_root_pass
-      MYSQL_DATABASE: db_name
-      MYSQL_USER: user_name
-      MYSQL_PASSWORD: user_pass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PWD}
+      MYSQL_DATABASE: ${WP_DATABASE_NAME}
+      MYSQL_USER: ${WP_DATABASE_USR}
+      MYSQL_PASSWORD: ${WP_DATABASE_PWD}
 
     restart: always
 
@@ -49,11 +49,11 @@ services:
 
     # match it with MariaDB's envirnmental variables
     environment:
-      WORDPRESS_DB_HOST: mysql
-      MYSQL_ROOT_PASSWORD: mysql_root_pass
-      WORDPRESS_DB_NAME: db_name
-      WORDPRESS_DB_USER: user_name
-      WORDPRESS_DB_PASSWORD: user_pass
+      WORDPRESS_DB_HOST: ${MYSQL_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PWD}
+      WORDPRESS_DB_NAME: ${WP_DATABASE_NAME}
+      WORDPRESS_DB_USER: ${WP_DATABASE_USR}
+      WORDPRESS_DB_PASSWORD: ${WP_DATABASE_PWD}
       WORDPRESS_TABLE_PREFIX: wp_
 
     # enables the WordPress service to communicate with the mysql service
